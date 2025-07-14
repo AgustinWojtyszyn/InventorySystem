@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sistema de Inventario Django
 
 Aplicación web para gestionar productos en stock, con funcionalidades CRUD, autenticación de usuarios y control de historial de cambios.
@@ -73,3 +74,6 @@ http://localhost:8000
 - Configurar despliegue en producción.
 
 Licencia MIT
+=======
+# InventorySystem
+>>>>>>> fe079c64ae1315efe997ec4a4896ecce6fadd9c5
