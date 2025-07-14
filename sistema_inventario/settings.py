@@ -42,7 +42,7 @@ SECRET_KEY = 'replace-this-with-a-secure-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['inventorysystem-3.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -146,3 +146,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
+
+# Crispy Forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
