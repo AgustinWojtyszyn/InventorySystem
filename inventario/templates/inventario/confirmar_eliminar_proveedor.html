@@ -1,0 +1,14 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+  <h1>Confirmar Eliminación</h1>
+  <p>¿Está seguro que desea eliminar el proveedor "{{ proveedor.nombre }}"?</p>
+  
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'detalle_proveedor' proveedor.id %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+{% endblock %}

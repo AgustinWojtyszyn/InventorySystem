@@ -1,0 +1,58 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}{{ producto.nombre }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ producto.nombre }}</h1>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Información del Producto</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Cantidad en stock:</strong> {{ producto.cantidad }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Precio:</strong> ${{ producto.precio }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Proveedor:</strong> {{ producto.proveedor|default:"No especificado" }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Última actualización:</strong> {{ producto.actualizado|date:"d/m/Y H:i" }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer text-end">
+                    <a href="{% url 'editar_producto' producto.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-danger">Eliminar</a>
+                    <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Volver</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Historial de Stock</h5>
+                </div>
+                <div class="card-body">
+                    {% if historial %}
+                        <ul class="list-group list-group-flush">
+                            {% for registro in historial %}
+                                <li class="list-group-item">
+                                    <small class="text-muted">{{ registro.fecha|date:"d/m H:i" }}</small><br>
+                                    {{ registro.usuario.username }} cambió de 
+                                    {{ registro.cantidad_anterior }} a {{ registro.cantidad_nueva }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">No hay registros de cambios</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

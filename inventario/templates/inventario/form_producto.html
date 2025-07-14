@@ -1,0 +1,61 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}{% if form.instance.id %}Editar{% else %}Nuevo{% endif %} Producto{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">{% if form.instance.id %}Editar{% else %}Nuevo{% endif %} Producto</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {% if form.nombre.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.nombre.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col-md-6">
+                {{ form.cantidad.label_tag }}
+                {{ form.cantidad }}
+                {% if form.cantidad.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.cantidad.errors|join:", " }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                {{ form.precio.label_tag }}
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    {{ form.precio }}
+                </div>
+                {% if form.precio.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ form.precio.errors|join:", " }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            {{ form.proveedor.label_tag }}
+            {{ form.proveedor }}
+            {% if form.proveedor.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.proveedor.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% if form.instance.id %}{% url 'detalle_producto' form.instance.id %}{% else %}{% url 'lista_productos' %}{% endif %}" 
+               class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}

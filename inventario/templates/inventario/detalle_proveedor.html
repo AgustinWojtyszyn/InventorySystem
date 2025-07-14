@@ -1,0 +1,73 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}Detalle Proveedor{% endblock %}
+
+{% block content %}
+  <h1>Detalle Proveedor</h1>
+  <dl class="row">
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">{{ proveedor.nombre }}</dd>
+
+    <dt class="col-sm-3">Teléfono</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.telefono %}
+        <a href="tel:{{ proveedor.telefono }}">{{ proveedor.telefono }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.email %}
+        <a href="mailto:{{ proveedor.email }}">{{ proveedor.email }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+
+    <dt class="col-sm-3">Dirección</dt>
+    <dd class="col-sm-9">{{ proveedor.direccion|linebreaksbr }}</dd>
+
+    <dt class="col-sm-3">Facebook</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.facebook %}
+        <a href="{{ proveedor.facebook }}" target="_blank" rel="noopener noreferrer">{{ proveedor.facebook }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+
+    <dt class="col-sm-3">Twitter</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.twitter %}
+        <a href="{{ proveedor.twitter }}" target="_blank" rel="noopener noreferrer">{{ proveedor.twitter }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+
+    <dt class="col-sm-3">Instagram</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.instagram %}
+        <a href="{{ proveedor.instagram }}" target="_blank" rel="noopener noreferrer">{{ proveedor.instagram }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+
+    <dt class="col-sm-3">Website</dt>
+    <dd class="col-sm-9">
+      {% if proveedor.website %}
+        <a href="{{ proveedor.website }}" target="_blank" rel="noopener noreferrer">{{ proveedor.website }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+  </dl>
+
+  <a href="{% url 'lista_proveedores' %}" class="btn btn-secondary">Volver a la lista</a>
+
+  <a href="{% url 'editar_proveedor' proveedor.id %}" class="btn btn-primary">Editar</a>
+  <a href="{% url 'eliminar_proveedor' proveedor.id %}" class="btn btn-danger">Eliminar</a>
+{% endblock %}

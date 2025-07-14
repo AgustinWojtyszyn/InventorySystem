@@ -1,0 +1,96 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %}{% if form.instance.id %}Editar{% else %}Nuevo{% endif %} Proveedor{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">{% if form.instance.id %}Editar{% else %}Nuevo{% endif %} Proveedor</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {% if form.nombre.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.nombre.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.direccion.label_tag }}
+            {{ form.direccion }}
+            {% if form.direccion.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.direccion.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.telefono.label_tag }}
+            {{ form.telefono }}
+            {% if form.telefono.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.telefono.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.email.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.facebook.label_tag }}
+            {{ form.facebook }}
+            {% if form.facebook.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.facebook.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.twitter.label_tag }}
+            {{ form.twitter }}
+            {% if form.twitter.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.twitter.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.instagram.label_tag }}
+            {{ form.instagram }}
+            {% if form.instagram.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.instagram.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.website.label_tag }}
+            {{ form.website }}
+            {% if form.website.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.website.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'lista_proveedores' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+{% endblock %}
